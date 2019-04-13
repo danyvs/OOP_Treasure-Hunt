@@ -8,7 +8,7 @@
 #include <algorithm>
 
 class Adventurer {
-    std::pair<int, int> position;
+    std::pair<int, int> position_;
 public:
     virtual void move() = 0;
 };
