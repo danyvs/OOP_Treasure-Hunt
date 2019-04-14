@@ -2,7 +2,22 @@
 // Created by Dany on 13.04.2019.
 //
 
+#include <cstdlib>
 #include "map.h"
+
+void Map::generateTreasures() {
+    for (int i = 0; i < 3; ++i) {
+        int line = rand() % cntLines_ ;
+        int column = rand() % cntColumns_;
+        while ((line == 0 && (column == 0 || column == cntColumns_ - 1)) || (line == cntLines_ - 1
+        && (column == 0 || column == cntColumns_ - 1)) || content_[line][column]) {
+            // in corners or position already occupied
+            line = rand() % cntLines_ ;
+            column = rand() % cntColumns_;
+        }
+        content_[line][column] = 1;
+    }
+}
 
 /**
  *  Getter for the content of a cell in map

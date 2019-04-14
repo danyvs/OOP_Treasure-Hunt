@@ -3,10 +3,11 @@
 //
 
 #include <algorithm>
+#include <cstdlib>
 #include "adventurer.h"
 
 void AdventurerA::move(Game& game) {
-    if (/*some condition*/) {
+    if (game.getCurrentStep() % 2) {
         int currentLine = position_.first;
         int currentColumn = position_.second;
 

@@ -13,6 +13,7 @@ class Game {
 public:
     int getCurrentStep();
     int getContentPositionMap(int line, int column);
+    void playOneround();
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H
