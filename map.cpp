@@ -5,15 +5,39 @@
 #include <cstdlib>
 #include "map.h"
 
+/**
+ *
+ * @param lines
+ * @param columns
+ */
+Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
+    content_ = new int*[cntLines_ + 2];
+    for (int i = 0; i < cntLines_ + 2; ++i)
+        content_[i] = new int[cntColumns_ + 2];
+
+    // border matrix with -1 to prevent the adventurers to go out of the map
+    for (int i = 0; i <= cntLines_ + 1; ++i)
+        content_[i][0] = content_[i][cntColumns_ + 1] = -1;
+    for (int j = 0; j <= cntColumns_ + 1; ++j)
+        content_[0][j] = content_[cntLines_ + 1][j] = -1;
+
+    for (int i = 1; i <= cntLines_; ++i)
+        for (int j = 1; j <= cntColumns_; ++j)
+            content_[i][j] = 0;
+}
+
+/**
+ *  Generate positions for the treasures
+ */
 void Map::generateTreasures() {
     for (int i = 0; i < 3; ++i) {
-        int line = rand() % cntLines_ ;
-        int column = rand() % cntColumns_;
-        while ((line == 0 && (column == 0 || column == cntColumns_ - 1)) || (line == cntLines_ - 1
-        && (column == 0 || column == cntColumns_ - 1)) || content_[line][column]) {
+        int line = 1 + rand() % cntLines_;
+        int column = 1 + rand() % cntColumns_;
+        while ((line == 1 && (column == 1 || column == cntColumns_ )) || (line == cntLines_ &&
+        (column == 1 || column == cntColumns_)) || content_[line][column]) {
             // in corners or position already occupied
-            line = rand() % cntLines_ ;
-            column = rand() % cntColumns_;
+            line = 1 + rand() % cntLines_ ;
+            column = 1 + rand() % cntColumns_;
         }
         content_[line][column] = 1;
     }
@@ -28,4 +52,5 @@ void Map::generateTreasures() {
 int Map::getContentPosition(int line, int column) {
     if (line >= -1 && line <= cntLines_ && column >= -1 && column <= cntColumns_)
         return content_[line][column];
+    return -1;
 }
