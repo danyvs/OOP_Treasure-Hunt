@@ -6,10 +6,11 @@
 #define OOP_TREASURE_HUNT_MAP_H
 
 class Map {
-    int cntLines, cntColumns;
+    int cntLines_, cntColumns_;
     int** content_;
 public:
     Map();
+    ~Map();
     void generateTreasures();
 };
 
