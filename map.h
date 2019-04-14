@@ -12,6 +12,7 @@ public:
     Map();
     ~Map();
     void generateTreasures();
+    int getContentPosition(int line, int column);
 };
 
 #endif //OOP_TREASURE_HUNT_MAP_H

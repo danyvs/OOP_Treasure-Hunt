@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "map.h"
+#include "game.h"
 #include "adventurer.h"
 
 using namespace std;
