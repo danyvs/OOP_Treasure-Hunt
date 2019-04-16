@@ -18,6 +18,6 @@ int Game::getCurrentStep() {
  * @param column - int
  * @return int map_.content_[line][column]
  */
-int Game::getContentPositionMap(int line, int column) {
+/*int Game::getContentPositionMap(int line, int column) {
     return map_.getContentPosition(line, column);
-}
+}*/

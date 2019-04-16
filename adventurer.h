@@ -17,19 +17,25 @@ public:
 };
 
 class AdventurerA : public Adventurer {
+public:
+    AdventurerA();
     void move(Map& map, int step);
 };
 
 class AdventurerB : public Adventurer {
-    void move(Map& map);
+public:
+
+    void move(Map& map, int step);
 };
 
 class AdventurerC : public Adventurer {
-    void move(Map& map);
+public:
+    void move(Map& map, int step);
 };
 
-class AdventurerD : public Adventurer {
-    void move(Map& map);
+class Adventurerd : public Adventurer {
+public:
+    void move(Map& map, int step);
 };
 
 #endif //OOP_TREASURE_HUNT_ADVENTURER_H

@@ -27,6 +27,18 @@ bool Adventurer::canAdventurerMove(Map &map) {
     return false;
 }
 
+/**
+ *  Constructor for class AdventurerA
+ */
+AdventurerA::AdventurerA() {
+    position_ = std::make_pair(1, 1);
+}
+
+/**
+ *
+ * @param map
+ * @param step
+ */
 void AdventurerA::move(Map& map, int step) {
     if (step % 2) {
         int currentLine = position_.first;
