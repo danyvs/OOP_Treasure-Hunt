@@ -13,7 +13,7 @@ protected:
     std::pair<int, int> position_;
 public:
     virtual void move(Map& map, int step) = 0;
-
+    bool canAdventurerMove(Map& map);
 };
 
 class AdventurerA : public Adventurer {

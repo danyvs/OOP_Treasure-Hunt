@@ -6,6 +6,27 @@
 #include <cstdlib>
 #include "adventurer.h"
 
+/**
+ *  Check if current Adventurer can move into a neighbour cell
+ * @param map - Map
+ * @return true or false, if the Adventurer can move or not
+ */
+bool Adventurer::canAdventurerMove(Map &map) {
+    const int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+    const int dy[] = {-1, 0, 1, 1, 1, 0, -1, -1};
+
+    int line = position_.first;
+    int column = position_.second;
+    for (int i = 0; i < 8; ++i) {
+        int newLine = line + dx[i];
+        int newColumn = column + dy[i];
+        if (map.getContentPosition(newLine, newColumn) == 0)
+            return true;
+    }
+
+    return false;
+}
+
 void AdventurerA::move(Map& map, int step) {
     if (step % 2) {
         int currentLine = position_.first;
