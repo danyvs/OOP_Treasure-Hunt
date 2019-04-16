@@ -6,29 +6,30 @@
 #define OOP_TREASURE_HUNT_ADVENTURER_H
 
 #include <algorithm>
-#include "game.h"
+#include "map.h"
 
 class Adventurer {
 protected:
     std::pair<int, int> position_;
 public:
-    virtual void move(Game& game) = 0;
+    virtual void move(Map& map, int step) = 0;
+
 };
 
 class AdventurerA : public Adventurer {
-    void move(Game& game);
+    void move(Map& map, int step);
 };
 
 class AdventurerB : public Adventurer {
-    void move(Game& game);
+    void move(Map& map);
 };
 
 class AdventurerC : public Adventurer {
-    void move(Game& game);
+    void move(Map& map);
 };
 
 class AdventurerD : public Adventurer {
-    void move(Game& game);
+    void move(Map& map);
 };
 
 #endif //OOP_TREASURE_HUNT_ADVENTURER_H

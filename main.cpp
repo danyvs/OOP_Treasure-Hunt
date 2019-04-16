@@ -7,6 +7,8 @@
 using namespace std;
 
 int main() {
-    vector<Adventurer*> adventurers;
+    Map map(15, 15);
+    map.generateTreasures();
+    map.printMap();
     return 0;
 }

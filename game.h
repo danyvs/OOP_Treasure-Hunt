@@ -5,14 +5,16 @@
 #ifndef OOP_TREASURE_HUNT_GAME_H
 #define OOP_TREASURE_HUNT_GAME_H
 
-#include "map.h"
+#include <vector>
+#include "adventurer.h"
 
 class Game {
     Map map_;
     int currentStep_;
+    std::vector<Adventurer*> adventurers;
 public:
     int getCurrentStep();
-    int getContentPositionMap(int line, int column);
+    // int getContentPositionMap(int line, int column);
     void playOneround();
 };
 
