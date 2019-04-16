@@ -13,7 +13,7 @@ class Game {
     std::vector<Adventurer*> adventurers_;
 public:
     Game(int lines, int columns);
-    void playOneround();
+    void playOneround(int step);
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H

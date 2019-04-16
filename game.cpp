@@ -11,9 +11,19 @@
  */
 Game::Game(int lines, int columns) : map_(lines, columns) {
     adventurers_.push_back(new AdventurerA);
-    adventurers_.push_back(new AdventurerB);
-    adventurers_.push_back(new AdventurerC);
-    adventurers_.push_back(new AdventurerD);
+    // adventurers_.push_back(new AdventurerB);
+    // adventurers_.push_back(new AdventurerC);
+    // adventurers_.push_back(new AdventurerD);
+}
+
+/**
+ *  Play one round: move all the adventurers
+ * @param step - the number of the current step
+ */
+void Game::playOneround(int step) {
+    for (auto it : adventurers_)
+        it->move(map_, step);
+
 }
 
 /**

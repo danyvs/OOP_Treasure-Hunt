@@ -6,10 +6,12 @@ using namespace std;
 
 int main() {
     int lines, columns;
-    cout << "Input the nmber of lines and columns: ";
-    cin >> lines >> columns;
+    do {
+        cout << "Input the number of lines (>= 15) and columns (>= 15): ";
+        cin >> lines >> columns;
+    } while (lines < 15 || columns < 15);
 
-    Game game(lines, columns);
+    // Game game(lines, columns);
 
     return 0;
 }
