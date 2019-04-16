@@ -10,11 +10,9 @@
 
 class Game {
     Map map_;
-    int currentStep_;
-    std::vector<Adventurer*> adventurers;
+    std::vector<Adventurer*> adventurers_;
 public:
-    int getCurrentStep();
-    // int getContentPositionMap(int line, int column);
+    Game(int lines, int columns);
     void playOneround();
 };
 

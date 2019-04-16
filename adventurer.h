@@ -33,7 +33,7 @@ public:
     void move(Map& map, int step);
 };
 
-class Adventurerd : public Adventurer {
+class AdventurerD : public Adventurer {
 public:
     void move(Map& map, int step);
 };

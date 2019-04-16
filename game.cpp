@@ -5,11 +5,15 @@
 #include "game.h"
 
 /**
- *  Getter for currentState_
- * @return int currentState_
+ *  Constructor for class Game
+ * @param lines
+ * @param columns
  */
-int Game::getCurrentStep() {
-    return currentStep_;
+Game::Game(int lines, int columns) : map_(lines, columns) {
+    adventurers_.push_back(new AdventurerA);
+    adventurers_.push_back(new AdventurerB);
+    adventurers_.push_back(new AdventurerC);
+    adventurers_.push_back(new AdventurerD);
 }
 
 /**
