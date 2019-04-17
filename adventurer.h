@@ -12,13 +12,14 @@ class Adventurer {
 protected:
     std::pair<int, int> position_;
 public:
+    Adventurer(int line, int column);
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
 };
 
 class AdventurerA : public Adventurer {
 public:
-    AdventurerA();
+    AdventurerA(int line, int column);
     void move(Map& map, int step);
 };
 

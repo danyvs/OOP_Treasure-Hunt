@@ -7,6 +7,15 @@
 #include "adventurer.h"
 
 /**
+ *
+ * @param line
+ * @param column
+ */
+Adventurer::Adventurer(int line, int column) {
+    position_ = std::make_pair(line, column);
+}
+
+/**
  *  Check if current Adventurer can move into a neighbour cell
  * @param map - Map
  * @return true or false, if the Adventurer can move or not
@@ -28,10 +37,12 @@ bool Adventurer::canAdventurerMove(Map &map) {
 }
 
 /**
- *  Constructor for class AdventurerA
+ *
+ * @param line
+ * @param column
  */
-AdventurerA::AdventurerA() {
-    position_ = std::make_pair(1, 1);
+AdventurerA::AdventurerA(int line, int column) : Adventurer(line, column) {
+
 }
 
 /**
@@ -41,16 +52,15 @@ AdventurerA::AdventurerA() {
  */
 void AdventurerA::move(Map& map, int step) {
     if (step % 2) {
-        int currentLine = position_.first;
-        int currentColumn = position_.second;
+        int line, column;
 
         // try to move the adventurer in a neighbour cell
-        currentLine += rand() % 3 - 1;
-        currentColumn += rand() % 3 - 1;
+        do {
+            line = position_.first + rand() % 3 - 1;
+            column = position_.second + rand() % 3 - 1;
+        } while (map.getContentPosition(line, column) == -1);
 
-        if (map.getContentPosition(currentLine, currentColumn) >= 0) {
-            // the new position is accessible
-            position_ = std::make_pair(currentLine, currentColumn);
-        }
+        position_ = std::make_pair(line, column);
+        map.setContentPosition(line, column, -1);
     }
 }

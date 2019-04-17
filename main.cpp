@@ -11,7 +11,12 @@ int main() {
         cin >> lines >> columns;
     } while (lines < 15 || columns < 15);
 
-    // Game game(lines, columns);
+    Game game(lines, columns);
+
+    for (int i = 0; i < 10; ++i)
+        game.playOneround(i);
+    game.print();
+
 
     return 0;
 }

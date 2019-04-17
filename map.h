@@ -15,6 +15,10 @@ public:
     //~Map();
     void generateTreasures();
     int getContentPosition(int line, int column);
+    void setContentPosition(int line, int column, int data);
+    int getCntLines();
+    int getCntColumns();
+
     void printMap() {
         for (int i = 0; i <= cntLines_ + 1; ++i) {
             for (int j = 0; j <= cntColumns_ + 1; ++j)

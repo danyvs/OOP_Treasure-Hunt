@@ -50,7 +50,18 @@ void Map::generateTreasures() {
  * @return int content_[line][column]
  */
 int Map::getContentPosition(int line, int column) {
-    if (line >= -1 && line <= cntLines_ && column >= -1 && column <= cntColumns_)
+    if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
         return content_[line][column];
     return -1;
+}
+
+/**
+ *  Setter for the content of the map at a given line and column
+ * @param line
+ * @param column
+ * @param data
+ */
+void Map::setContentPosition(int line, int column, int data) {
+    if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
+        content_[line][column] = data;
 }

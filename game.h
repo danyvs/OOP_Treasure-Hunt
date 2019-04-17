@@ -14,6 +14,9 @@ class Game {
 public:
     Game(int lines, int columns);
     void playOneround(int step);
+    void print() {
+        map_.printMap();
+    }
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H
