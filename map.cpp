@@ -6,9 +6,10 @@
 #include "map.h"
 
 /**
- *
- * @param lines
- * @param columns
+ *  Constructor for class Map
+ *  Initialize the map with 0 and border it with -1
+ * @param lines - int, the number of lines
+ * @param columns - int, the number of columns
  */
 Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
     content_ = new int*[cntLines_ + 2];
@@ -24,6 +25,16 @@ Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
     for (int i = 1; i <= cntLines_; ++i)
         for (int j = 1; j <= cntColumns_; ++j)
             content_[i][j] = 0;
+}
+
+/**
+ *  Destructor for class Map
+ *  Release the allocated memory
+ */
+Map::~Map() {
+    for (int i = 0; i <= cntLines_ + 1; ++i)
+        delete[] content_[i];
+    delete content_;
 }
 
 /**
