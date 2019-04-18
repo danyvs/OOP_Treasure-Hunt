@@ -13,7 +13,10 @@ class Game {
     std::vector<Adventurer*> adventurers_;
 public:
     Game(int lines, int columns);
-    void playOneround(int step);
+    ~Game();
+
+    void playOneRound(int step);
+
     void print() {
         map_.printMap();
     }

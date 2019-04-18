@@ -14,15 +14,29 @@ Game::Game(int lines, int columns) : map_(lines, columns) {
     map_.setContentPosition(1, 1, -1);
 
     // adventurers_.push_back(new AdventurerB);
+    // map_.setContentPosition(1, map_.getCntColumns(), -1);
+
     // adventurers_.push_back(new AdventurerC);
+    // map_.setContentPosition(map_.getCntColumns(), 1, -1);
+
     // adventurers_.push_back(new AdventurerD);
+    // map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), -1);
+
+    map_.generateTreasures();
+}
+
+/**
+ *  Destructor for class Game
+ */
+Game::~Game() {
+    map_.printMap();
 }
 
 /**
  *  Play one round: move all the adventurers
  * @param step - the number of the current step
  */
-void Game::playOneround(int step) {
+void Game::playOneRound(int step) {
     for (auto it : adventurers_)
         if (it->canAdventurerMove(map_))
             it->move(map_, step);
