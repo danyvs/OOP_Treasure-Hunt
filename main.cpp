@@ -13,8 +13,8 @@ int main() {
 
     Game game(lines, columns);
 
-    for (int i = 0; i < 10; ++i)
-        game.playOneround(i);
+    // for (int i = 0; i < 10; ++i)
+    //     game.playOneRound(i);
     game.print();
 
 

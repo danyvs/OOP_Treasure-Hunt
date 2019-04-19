@@ -3,7 +3,6 @@
 //
 
 #include <algorithm>
-#include <cstdlib>
 #include "adventurer.h"
 
 /**
@@ -51,16 +50,16 @@ AdventurerA::AdventurerA(int line, int column) : Adventurer(line, column) {
  * @param step
  */
 void AdventurerA::move(Map& map, int step) {
-    if (step % 2) {
-        int line, column;
+    int line, column;
 
-        // try to move the adventurer in a neighbour cell
-        do {
-            line = position_.first + rand() % 3 - 1;
-            column = position_.second + rand() % 3 - 1;
-        } while (map.getContentPosition(line, column) == -1);
 
-        position_ = std::make_pair(line, column);
-        map.setContentPosition(line, column, -1);
-    }
+
+    // try to move the adventurer in a neighbour cell
+    do {
+        // line = ;
+        // column = ;
+    } while (map.getContentPosition(line, column) == -1);
+
+    position_ = std::make_pair(line, column);
+    map.setContentPosition(line, column, -1);
 }

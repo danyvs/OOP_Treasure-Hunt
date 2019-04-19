@@ -5,15 +5,20 @@
 #ifndef OOP_TREASURE_HUNT_GAME_H
 #define OOP_TREASURE_HUNT_GAME_H
 
+#include <algorithm>
 #include <vector>
 #include "adventurer.h"
 
+using namespace std;
+
 class Game {
     Map map_;
-    std::vector<Adventurer*> adventurers_;
+    vector<Adventurer*> adventurers_;
+    vector<pair<int, int>> treasures_;
 public:
     Game(int lines, int columns);
     ~Game();
+    void generateTreasures();
 
     void playOneRound(int step);
 

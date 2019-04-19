@@ -3,7 +3,6 @@
 //
 
 #include <cstdlib>
-#include <time.h>
 #include "map.h"
 
 /**
@@ -39,24 +38,6 @@ Map::~Map() {
 }
 
 /**
- *  Generate positions for the treasures
- */
-void Map::generateTreasures() {
-    srand(time(NULL));
-    for (int i = 0; i < 3; ++i) {
-        int line = 1 + rand() % cntLines_;
-        int column = 1 + rand() % cntColumns_;
-        while ((line == 1 && (column == 1 || column == cntColumns_ )) || (line == cntLines_ &&
-        (column == 1 || column == cntColumns_)) || content_[line][column]) {
-            // in corners or position already occupied
-            line = 1 + rand() % cntLines_ ;
-            column = 1 + rand() % cntColumns_;
-        }
-        content_[line][column] = 1;
-    }
-}
-
-/**
  *  Getter for the number of lines
  * @return (int) cntLines_
  */
@@ -86,9 +67,9 @@ int Map::getContentPosition(int line, int column) {
 
 /**
  *  Setter for the content of the map at a given line and column
- * @param line
- * @param column
- * @param data
+ * @param line - int
+ * @param column - int
+ * @param data - int
  */
 void Map::setContentPosition(int line, int column, int data) {
     if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)

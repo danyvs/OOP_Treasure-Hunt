@@ -13,12 +13,10 @@ class Map {
 public:
     Map(int lines, int columns);
     ~Map();
-    void generateTreasures();
     int getCntLines();
     int getCntColumns();
     int getContentPosition(int line, int column);
     void setContentPosition(int line, int column, int data);
-
 
     void printMap() {
         // to be deleted
