@@ -15,13 +15,13 @@ Game::Game(int lines, int columns) : map_(lines, columns) {
     adventurers_.push_back(new AdventurerA(1, 1));
     map_.setContentPosition(1, 1, 1);
 
-    // adventurers_.push_back(new AdventurerB(1, map_.getCntColumns()));
+    adventurers_.push_back(new AdventurerB(1, map_.getCntColumns()));
     map_.setContentPosition(1, map_.getCntColumns(), 1);
 
-    // adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1));
+    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1));
     map_.setContentPosition(map_.getCntColumns(), 1, 1);
 
-    // adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns()));
+    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns()));
     map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
 }
 

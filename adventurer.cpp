@@ -36,9 +36,9 @@ bool Adventurer::canAdventurerMove(Map &map) {
 }
 
 /**
- *
- * @param line
- * @param column
+ *  Constructor for AdventurerA
+ * @param line - int, the line to place the Adventurer on
+ * @param column - int, the column to place the Adventurer on
  */
 AdventurerA::AdventurerA(int line, int column) : Adventurer(line, column) {
 
@@ -51,8 +51,91 @@ AdventurerA::AdventurerA(int line, int column) : Adventurer(line, column) {
  */
 void AdventurerA::move(Map& map, int step) {
     int line, column;
+    ++step;
 
+    // try to move the adventurer in a neighbour cell
+    do {
+        // line = ;
+        // column = ;
+    } while (map.getContentPosition(line, column) == 1);
 
+    position_ = std::make_pair(line, column);
+    map.setContentPosition(line, column, -1);
+}
+
+/**
+ *  Constructor for AdventurerB
+ * @param line - int, the line to place the Adventurer on
+ * @param column - int, the column to place the Adventurer on
+ */
+AdventurerB::AdventurerB(int line, int column) : Adventurer(line, column) {
+
+}
+
+/**
+ *
+ * @param map
+ * @param step
+ */
+void AdventurerB::move(Map& map, int step) {
+    int line, column;
+    ++step;
+
+    // try to move the adventurer in a neighbour cell
+    do {
+        // line = ;
+        // column = ;
+    } while (map.getContentPosition(line, column) == 1);
+
+    position_ = std::make_pair(line, column);
+    map.setContentPosition(line, column, -1);
+}
+
+/**
+ *  Constructor for AdventurerC
+ * @param line - int, the line to place the Adventurer on
+ * @param column - int, the column to place the Adventurer on
+ */
+AdventurerC::AdventurerC(int line, int column) : Adventurer(line, column) {
+
+}
+
+/**
+ *
+ * @param map
+ * @param step
+ */
+void AdventurerC::move(Map& map, int step) {
+    int line, column;
+    ++step;
+
+    // try to move the adventurer in a neighbour cell
+    do {
+        // line = ;
+        // column = ;
+    } while (map.getContentPosition(line, column) == 1);
+
+    position_ = std::make_pair(line, column);
+    map.setContentPosition(line, column, -1);
+}
+
+/**
+ *  Constructor for AdventurerD
+ * @param line - int, the line to place the Adventurer on
+ * @param column - int, the column to place the Adventurer on
+ */
+AdventurerD::AdventurerD(int line, int column) : Adventurer(line, column) {
+
+}
+
+/**
+ *
+ * @param map
+ * @param step
+ */
+void AdventurerD::move(Map& map, int step) {
+    int line, column;
+    ++step;
 
     // try to move the adventurer in a neighbour cell
     do {

@@ -25,17 +25,19 @@ public:
 
 class AdventurerB : public Adventurer {
 public:
-
+    AdventurerB(int line, int column);
     void move(Map& map, int step);
 };
 
 class AdventurerC : public Adventurer {
 public:
+    AdventurerC(int line, int column);
     void move(Map& map, int step);
 };
 
 class AdventurerD : public Adventurer {
 public:
+    AdventurerD(int line, int column);
     void move(Map& map, int step);
 };
 
