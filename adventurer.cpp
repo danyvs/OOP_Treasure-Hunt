@@ -28,7 +28,7 @@ bool Adventurer::canAdventurerMove(Map &map) {
     for (int i = 0; i < 8; ++i) {
         int newLine = line + dx[i];
         int newColumn = column + dy[i];
-        if (map.getContentPosition(newLine, newColumn) == 0)
+        if (!map.getContentPosition(newLine, newColumn))
             return true;
     }
 
@@ -58,7 +58,7 @@ void AdventurerA::move(Map& map, int step) {
     do {
         // line = ;
         // column = ;
-    } while (map.getContentPosition(line, column) == -1);
+    } while (map.getContentPosition(line, column) == 1);
 
     position_ = std::make_pair(line, column);
     map.setContentPosition(line, column, -1);

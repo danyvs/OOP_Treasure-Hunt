@@ -18,9 +18,9 @@ Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
 
     // border matrix with -1 to prevent the adventurers to go out of the map
     for (int i = 0; i <= cntLines_ + 1; ++i)
-        content_[i][0] = content_[i][cntColumns_ + 1] = -1;
+        content_[i][0] = content_[i][cntColumns_ + 1] = 1;
     for (int j = 0; j <= cntColumns_ + 1; ++j)
-        content_[0][j] = content_[cntLines_ + 1][j] = -1;
+        content_[0][j] = content_[cntLines_ + 1][j] = 1;
 
     for (int i = 1; i <= cntLines_; ++i)
         for (int j = 1; j <= cntColumns_; ++j)

@@ -21,10 +21,6 @@ public:
     void generateTreasures();
 
     void playOneRound(int step);
-
-    void print() {
-        map_.printMap();
-    }
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H

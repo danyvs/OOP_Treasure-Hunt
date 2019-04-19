@@ -12,10 +12,10 @@ int main() {
     } while (lines < 15 || columns < 15);
 
     Game game(lines, columns);
+    game.generateTreasures();
 
     // for (int i = 0; i < 10; ++i)
     //     game.playOneRound(i);
-    game.print();
 
 
     return 0;
