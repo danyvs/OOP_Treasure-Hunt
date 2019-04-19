@@ -15,6 +15,7 @@ public:
     Adventurer(int line, int column);
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
+    std::pair<int, int> getPosition();
 };
 
 class AdventurerA : public Adventurer {

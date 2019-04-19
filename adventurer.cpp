@@ -36,6 +36,14 @@ bool Adventurer::canAdventurerMove(Map &map) {
 }
 
 /**
+ *  Getter for the position of an Adventurer
+ * @return (pair<int, int>) position
+ */
+std::pair<int, int> Adventurer::getPosition() {
+    return position_;
+}
+
+/**
  *  Constructor for AdventurerA
  * @param line - int, the line to place the Adventurer on
  * @param column - int, the column to place the Adventurer on
