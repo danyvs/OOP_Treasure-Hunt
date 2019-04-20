@@ -56,7 +56,7 @@ void Game::playOneRound(int step) {
     if (!gameFinished_) {
         cout << "Round #" << step << "\n";
         for (auto it : adventurers_) {
-            if (it->canAdventurerMove(map_)) {
+            if (it->getRankingPlace() == 0 && it->canAdventurerMove(map_)) {
                 cout << it->getName() << " : ";
 
                 // initial position
@@ -71,16 +71,17 @@ void Game::playOneRound(int step) {
                 auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
                 if (itFindTreasure != treasures_.end()) {
                     cout << it->getName() << " found a treasure!\n";
-                    adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
                     treasures_.erase(itFindTreasure);
                     it->setFoundATreasure(true);
                     it->setRankingPlace(rank_);
                     --rank_;
                     --it;
                 }
-            } else {
+            }
+            else {
                 cout << it->getName() << " was eliminated, because he can't move any more!\n";
-                adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
+                it->setRankingPlace(rank_);
+                --rank_;
                 --it;
             }
             gameFinished_ = (adventurers_.empty() || treasures_.empty());
@@ -110,4 +111,8 @@ void Game::play() {
         playOneRound(round);
         ++round;
     }
+}
+
+void Game::printLeaderborad() {
+    
 }
