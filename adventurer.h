@@ -12,11 +12,11 @@
 using namespace std;
 
 class Adventurer {
-protected:
     string name_;
-    pair<int, int> position_;
     bool foundATreasure_;
     int rankingPlace_;
+protected:
+    pair<int, int> position_;
 public:
     Adventurer(int line, int column, const string& name);
     virtual void move(Map& map, int step) = 0;
