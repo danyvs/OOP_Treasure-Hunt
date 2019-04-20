@@ -85,3 +85,24 @@ void Game::playOneRound(int step) {
             --it;
         }
 }
+
+/**
+ *  Play a given number of rounds
+ * @param cntRounds - int, the number of rounds to be played
+ */
+void Game::playNumberOfRounds(int cntRounds) {
+    for (int i = 1; i <= cntRounds; ++i)
+        playOneRound(i);
+}
+
+/**
+ *  Play until the end of the game
+ *  The game ends when there is no Adventurer left or when all the treasures are found
+ */
+void Game::play() {
+    int round = 1;
+    while (!adventurers_.empty() && !treasures_.empty()) {
+        playOneRound(round);
+        ++round;
+    }
+}
