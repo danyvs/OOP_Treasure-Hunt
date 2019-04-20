@@ -57,6 +57,7 @@ void Game::generateTreasures() {
  * @param step - the number of the current step
  */
 void Game::playOneRound(int step) {
+    cout << "Round #" << step << "\n";
     for (auto it : adventurers_)
         if (it->canAdventurerMove(map_)) {
             cout << it->getName() << " : ";

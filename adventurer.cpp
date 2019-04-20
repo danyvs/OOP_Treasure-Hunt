@@ -40,15 +40,15 @@ bool Adventurer::canAdventurerMove(Map &map) {
 
 /**
  *  Getter for the position of an Adventurer
- * @return (pair<int, int>) position
+ * @return (pair<int, int>) position_
  */
-std::pair<int, int> Adventurer::getPosition() {
+pair<int, int> Adventurer::getPosition() const {
     return position_;
 }
 
 /**
- *
- * @return
+ *  Getter for the name of an adventurer
+ * @return (string) name_
  */
 string Adventurer::getName() const {
     return name_;

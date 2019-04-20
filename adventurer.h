@@ -20,7 +20,7 @@ public:
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
     string getName() const;
-    pair<int, int> getPosition();
+    pair<int, int> getPosition() const;
 };
 
 class AdventurerA : public Adventurer {
