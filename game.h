@@ -21,6 +21,7 @@ public:
     void generateTreasures();
 
     void playOneRound(int step);
+    void playNumberOfRounds(int cntRounds);
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H

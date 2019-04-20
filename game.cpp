@@ -62,28 +62,26 @@ void Game::playOneRound(int step) {
         if (it->canAdventurerMove(map_)) {
             cout << it->getName() << " : ";
 
-            pair<int, int> positionAdventurer;
-
             // initial position
-            positionAdventurer = it->getPosition();
+            pair<int, int> positionAdventurer = it->getPosition();
             cout << positionAdventurer.first << " " << positionAdventurer.second << " -> ";
 
-            it->move(map_, step);
-
             // position after moving
+            it->move(map_, step);
             cout << positionAdventurer.first << " " << positionAdventurer.second << "\n";
 
             // verify if the current adventurer found a treasure
             auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
             if (itFindTreasure != treasures_.end()) {
-                cout << "We've got a winner boys!";
+                cout << it->getName() << " found a treasure!\n";
                 adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
                 treasures_.erase(itFindTreasure);
+                --it;
             }
-
-
         }
         else {
+            cout << it->getName() << " was eliminated, because he can't move any more!\n";
             adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
+            --it;
         }
 }
