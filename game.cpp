@@ -114,5 +114,6 @@ void Game::play() {
 }
 
 void Game::printLeaderborad() {
-    
+    for (auto it : adventurers_)
+        it->getFoundATreasure();
 }

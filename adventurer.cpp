@@ -61,7 +61,7 @@ pair<int, int> Adventurer::getPosition() const {
  * @param value - bool
  */
 void Adventurer::setFoundATreasure(bool value) {
-    foundATreasure_ = true;
+    foundATreasure_ = value;
 }
 
 /**
@@ -104,17 +104,20 @@ AdventurerA::AdventurerA(int line, int column, const string& name) : Adventurer(
  * @param step
  */
 void AdventurerA::move(Map& map, int step) {
-/*    int line, column;
-    ++step;
+    const int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+    const int dy[] = {-1, 0, 1, 1, 1, 0, -1, -1};
 
+    int line, column;
+    int index = step % 8;
     // try to move the adventurer in a neighbour cell
     do {
-        // line = ;
-        // column = ;
+        line = position_.first + dx[index];
+        column = position_.second + dy[index];
+        ++index;
     } while (map.getContentPosition(line, column) == 1);
 
-    position_ = std::make_pair(line, column);
-    map.setContentPosition(line, column, -1);*/
+    position_ = make_pair(line, column);
+    map.setContentPosition(line, column, 1);
 }
 
 /**
