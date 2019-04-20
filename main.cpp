@@ -11,13 +11,33 @@ int main() {
         cin >> lines >> columns;
     } while (lines < 15 || columns < 15);
 
+    // initialize the game
     Game game(lines, columns);
     game.generateTreasures();
 
-    game.playOneRound(1);
+    string answer;
+    int cntRounds;
+    cout << "Do you want to play 'til the end? (YES / NO)\n";
+    cin >> answer;
+    if (answer == "YES")
+        game.play();
+    else {
+        if (answer == "NO") {
+            cout << "Do you want to play a given number of rounds? (YES / NO)\n";
+            cin >> answer;
+            while (answer == "YES") {
+                cout << "Input the number of rounds you want to play: ";
+                cin >> cntRounds;
+                game.playNumberOfRounds(cntRounds);
 
-    // for (int i = 0; i < 10; ++i)
-    //     game.playOneRound(i);
+                cout << "Do you want to play a given number of rounds? (YES / NO)\n";
+                cin >> answer;
+            }
+        }
+        else
+            cout << "Invalid answer!\n";
+    }
+
 
 
     return 0;

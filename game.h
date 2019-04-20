@@ -15,6 +15,7 @@ class Game {
     Map map_;
     vector<Adventurer*> adventurers_;
     vector<pair<int, int>> treasures_;
+    bool gameFinished;
 public:
     Game(int lines, int columns);
     ~Game();

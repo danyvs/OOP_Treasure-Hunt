@@ -23,6 +23,8 @@ Game::Game(int lines, int columns) : map_(lines, columns) {
 
     adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "D"));
     map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
+
+    gameFinished = false;
 }
 
 /**
@@ -57,33 +59,36 @@ void Game::generateTreasures() {
  * @param step - the number of the current step
  */
 void Game::playOneRound(int step) {
-    cout << "Round #" << step << "\n";
-    for (auto it : adventurers_)
-        if (it->canAdventurerMove(map_)) {
-            cout << it->getName() << " : ";
+    if (!gameFinished) {
+        cout << "Round #" << step << "\n";
+        for (auto it : adventurers_) {
+            if (it->canAdventurerMove(map_)) {
+                cout << it->getName() << " : ";
 
-            // initial position
-            pair<int, int> positionAdventurer = it->getPosition();
-            cout << positionAdventurer.first << " " << positionAdventurer.second << " -> ";
+                // initial position
+                pair<int, int> positionAdventurer = it->getPosition();
+                cout << positionAdventurer.first << " " << positionAdventurer.second << " -> ";
 
-            // position after moving
-            it->move(map_, step);
-            cout << positionAdventurer.first << " " << positionAdventurer.second << "\n";
+                // position after moving
+                it->move(map_, step);
+                cout << positionAdventurer.first << " " << positionAdventurer.second << "\n";
 
-            // verify if the current adventurer found a treasure
-            auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
-            if (itFindTreasure != treasures_.end()) {
-                cout << it->getName() << " found a treasure!\n";
+                // verify if the current adventurer found a treasure
+                auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
+                if (itFindTreasure != treasures_.end()) {
+                    cout << it->getName() << " found a treasure!\n";
+                    adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
+                    treasures_.erase(itFindTreasure);
+                    --it;
+                }
+            } else {
+                cout << it->getName() << " was eliminated, because he can't move any more!\n";
                 adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
-                treasures_.erase(itFindTreasure);
                 --it;
             }
+            gameFinished = (adventurers_.empty() || treasures_.empty());
         }
-        else {
-            cout << it->getName() << " was eliminated, because he can't move any more!\n";
-            adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
-            --it;
-        }
+    }
 }
 
 /**
@@ -92,7 +97,10 @@ void Game::playOneRound(int step) {
  */
 void Game::playNumberOfRounds(int cntRounds) {
     for (int i = 1; i <= cntRounds; ++i)
-        playOneRound(i);
+        if (!gameFinished)
+            playOneRound(i);
+        else
+            cout << "Game ended before the given number of rounds!\n";
 }
 
 /**
@@ -101,7 +109,7 @@ void Game::playNumberOfRounds(int cntRounds) {
  */
 void Game::play() {
     int round = 1;
-    while (!adventurers_.empty() && !treasures_.empty()) {
+    while (!gameFinished) {
         playOneRound(round);
         ++round;
     }
