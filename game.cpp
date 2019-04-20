@@ -12,16 +12,16 @@
  * @param columns
  */
 Game::Game(int lines, int columns) : map_(lines, columns) {
-    adventurers_.push_back(new AdventurerA(1, 1));
+    adventurers_.push_back(new AdventurerA(1, 1, "A"));
     map_.setContentPosition(1, 1, 1);
 
-    adventurers_.push_back(new AdventurerB(1, map_.getCntColumns()));
+    adventurers_.push_back(new AdventurerB(1, map_.getCntColumns(), "B"));
     map_.setContentPosition(1, map_.getCntColumns(), 1);
 
-    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1));
+    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1, "C"));
     map_.setContentPosition(map_.getCntColumns(), 1, 1);
 
-    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns()));
+    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "D"));
     map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
 }
 
@@ -59,8 +59,9 @@ void Game::generateTreasures() {
 void Game::playOneRound(int step) {
     for (auto it : adventurers_)
         if (it->canAdventurerMove(map_)) {
-            pair<int, int> positionAdventurer;
+            cout << it->getName() << " : ";
 
+            pair<int, int> positionAdventurer;
 
             // initial position
             positionAdventurer = it->getPosition();

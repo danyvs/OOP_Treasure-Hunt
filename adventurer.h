@@ -13,10 +13,10 @@ using namespace std;
 
 class Adventurer {
 protected:
-    const string name_;
+    string name_;
     pair<int, int> position_;
 public:
-    Adventurer(int line, int column, string name);
+    Adventurer(int line, int column, const string& name);
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
     string getName() const;
@@ -25,25 +25,25 @@ public:
 
 class AdventurerA : public Adventurer {
 public:
-    AdventurerA(int line, int column);
+    AdventurerA(int line, int column, const string& name);
     void move(Map& map, int step);
 };
 
 class AdventurerB : public Adventurer {
 public:
-    AdventurerB(int line, int column);
+    AdventurerB(int line, int column, const string& name);
     void move(Map& map, int step);
 };
 
 class AdventurerC : public Adventurer {
 public:
-    AdventurerC(int line, int column);
+    AdventurerC(int line, int column, const string& name);
     void move(Map& map, int step);
 };
 
 class AdventurerD : public Adventurer {
 public:
-    AdventurerD(int line, int column);
+    AdventurerD(int line, int column, const string& name);
     void move(Map& map, int step);
 };
 

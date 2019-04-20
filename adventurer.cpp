@@ -6,12 +6,15 @@
 #include "adventurer.h"
 
 /**
- *
- * @param line
- * @param column
+ *  Constructor for class Adventurer
+ *  Initialize the name and the position with given data
+ * @param line - int, the line to place the Adventurer on
+ * @param column - int, the column to place the Adventurer on
+ * @param name - string, the name of the Adventurer
  */
-Adventurer::Adventurer(int line, int column) {
-    position_ = std::make_pair(line, column);
+Adventurer::Adventurer(int line, int column, const string& name) {
+    name_ = name;
+    position_ = make_pair(line, column);
 }
 
 /**
@@ -55,8 +58,9 @@ string Adventurer::getName() const {
  *  Constructor for AdventurerA
  * @param line - int, the line to place the Adventurer on
  * @param column - int, the column to place the Adventurer on
+ * @param name, string, the name of the Adventurer
  */
-AdventurerA::AdventurerA(int line, int column) : Adventurer(line, column) {
+AdventurerA::AdventurerA(int line, int column, const string& name) : Adventurer(line, column, name) {
 
 }
 
@@ -83,8 +87,9 @@ void AdventurerA::move(Map& map, int step) {
  *  Constructor for AdventurerB
  * @param line - int, the line to place the Adventurer on
  * @param column - int, the column to place the Adventurer on
+ * @param name, string, the name of the Adventurer
  */
-AdventurerB::AdventurerB(int line, int column) : Adventurer(line, column) {
+AdventurerB::AdventurerB(int line, int column, const string& name) : Adventurer(line, column, name) {
 
 }
 
@@ -111,8 +116,9 @@ void AdventurerB::move(Map& map, int step) {
  *  Constructor for AdventurerC
  * @param line - int, the line to place the Adventurer on
  * @param column - int, the column to place the Adventurer on
+ * @param name, string, the name of the Adventurer
  */
-AdventurerC::AdventurerC(int line, int column) : Adventurer(line, column) {
+AdventurerC::AdventurerC(int line, int column, const string& name) : Adventurer(line, column, name) {
 
 }
 
@@ -139,8 +145,9 @@ void AdventurerC::move(Map& map, int step) {/*
  *  Constructor for AdventurerD
  * @param line - int, the line to place the Adventurer on
  * @param column - int, the column to place the Adventurer on
+ * @param name, string, the name of the Adventurer
  */
-AdventurerD::AdventurerD(int line, int column) : Adventurer(line, column) {
+AdventurerD::AdventurerD(int line, int column, const string& name) : Adventurer(line, column, name) {
 
 }
 
