@@ -6,16 +6,21 @@
 #define OOP_TREASURE_HUNT_ADVENTURER_H
 
 #include <algorithm>
+#include <string>
 #include "map.h"
+
+using namespace std;
 
 class Adventurer {
 protected:
-    std::pair<int, int> position_;
+    const string name_;
+    pair<int, int> position_;
 public:
-    Adventurer(int line, int column);
+    Adventurer(int line, int column, string name);
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
-    std::pair<int, int> getPosition();
+    string getName() const;
+    pair<int, int> getPosition();
 };
 
 class AdventurerA : public Adventurer {

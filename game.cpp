@@ -58,6 +58,30 @@ void Game::generateTreasures() {
  */
 void Game::playOneRound(int step) {
     for (auto it : adventurers_)
-        if (it->canAdventurerMove(map_))
+        if (it->canAdventurerMove(map_)) {
+            pair<int, int> positionAdventurer;
+
+
+            // initial position
+            positionAdventurer = it->getPosition();
+            cout << positionAdventurer.first << " " << positionAdventurer.second << " -> ";
+
             it->move(map_, step);
+
+            // position after moving
+            cout << positionAdventurer.first << " " << positionAdventurer.second << "\n";
+
+            // verify if the current adventurer found a treasure
+            auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
+            if (itFindTreasure != treasures_.end()) {
+                cout << "We've got a winner boys!";
+                adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
+                treasures_.erase(itFindTreasure);
+            }
+
+
+        }
+        else {
+            adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
+        }
 }

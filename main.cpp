@@ -14,6 +14,8 @@ int main() {
     Game game(lines, columns);
     game.generateTreasures();
 
+    game.playOneRound(1);
+
     // for (int i = 0; i < 10; ++i)
     //     game.playOneRound(i);
 
