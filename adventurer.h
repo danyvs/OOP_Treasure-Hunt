@@ -20,7 +20,7 @@ protected:
 public:
     Adventurer(int line, int column, const string& name);
     virtual void move(Map& map, int step) = 0;
-    bool canAdventurerMove(Map& map);
+    virtual bool canAdventurerMove(Map& map) = 0;
     string getName() const;
     pair<int, int> getPosition() const;
     void setFoundATreasure(bool value);
@@ -30,8 +30,11 @@ public:
 };
 
 class AdventurerA : public Adventurer {
+    const int dx[8] = {-1, -1, -1, 0, 1, 1, 1, 0};
+    const int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
 public:
     AdventurerA(int line, int column, const string& name);
+    bool canAdventurerMove(Map& map);
     void move(Map& map, int step);
 };
 
