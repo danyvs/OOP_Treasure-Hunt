@@ -129,23 +129,43 @@ AdventurerB::AdventurerB(int line, int column, const string& name) : Adventurer(
 }
 
 /**
- *
- * @param map
- * @param step
+ *  Check if AdventurerB can move into a neighbour cell
+ * @param map - Map
+ * @return true or false, if the AdventurerB can move or not
+ */
+bool AdventurerB::canAdventurerMove(Map &map) {
+    int line = position_.first;
+    int column = position_.second;
+    for (int i = 0; i < 4; ++i) {
+        int newLine = line + dx[i];
+        int newColumn = column + dy[i];
+        if (!map.getContentPosition(newLine, newColumn))
+            return true;
+    }
+
+    return false;
+}
+
+/**
+ *  Move function for AdventurerB
+ * @param map - Map
+ * @param step - the number of the current round
  */
 void AdventurerB::move(Map& map, int step) {
-  /*  int line, column;
-    ++step;
-
+    int line, column;
+    int index = step % 4;
     // try to move the adventurer in a neighbour cell
     do {
-        // line = ;
-        // column = ;
+        line = position_.first + dx[index];
+        column = position_.second + dy[index];
+        index = (index + 1) % 4;
     } while (map.getContentPosition(line, column) == 1);
 
-    position_ = std::make_pair(line, column);
-    map.setContentPosition(line, column, -1);*/
+    position_ = make_pair(line, column);
+    map.setContentPosition(line, column, 1);
 }
+
+
 
 /**
  *  Constructor for AdventurerC

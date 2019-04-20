@@ -34,14 +34,17 @@ class AdventurerA : public Adventurer {
     const int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
 public:
     AdventurerA(int line, int column, const string& name);
-    bool canAdventurerMove(Map& map);
-    void move(Map& map, int step);
+    bool canAdventurerMove(Map& map) override;
+    void move(Map& map, int step) override;
 };
 
 class AdventurerB : public Adventurer {
+    const int dx[4] = {-1, 0, 1, 0};
+    const int dy[4] = {0, 1, 0, -1};
 public:
     AdventurerB(int line, int column, const string& name);
-    void move(Map& map, int step);
+    bool canAdventurerMove(Map& map) override;
+    void move(Map& map, int step) override;
 };
 
 class AdventurerC : public Adventurer {
