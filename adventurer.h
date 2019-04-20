@@ -16,7 +16,7 @@ protected:
     string name_;
     pair<int, int> position_;
     bool foundATreasure_;
-    int place_;
+    int rankingPlace_;
 public:
     Adventurer(int line, int column, const string& name);
     virtual void move(Map& map, int step) = 0;
@@ -25,8 +25,8 @@ public:
     pair<int, int> getPosition() const;
     void setFoundATreasure(bool value);
     bool getFoundATreasure() const;
-    void setPlace(int number);
-    int getPlace() const;
+    void setRankingPlace(int number);
+    int getRankingPlace() const;
 };
 
 class AdventurerA : public Adventurer {

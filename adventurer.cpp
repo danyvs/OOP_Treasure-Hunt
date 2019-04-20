@@ -16,7 +16,7 @@ Adventurer::Adventurer(int line, int column, const string& name) {
     name_ = name;
     position_ = make_pair(line, column);
     foundATreasure_ = false;
-    place_ = 0;
+    rankingPlace_ = 0;
 }
 
 /**
@@ -70,6 +70,22 @@ void Adventurer::setFoundATreasure(bool value) {
  */
 bool Adventurer::getFoundATreasure() const {
     return foundATreasure_;
+}
+
+/**
+ *  Setter for the place in the ranking of an Adventurer
+ * @param number - int, the rank
+ */
+void Adventurer::setRankingPlace(int number) {
+    rankingPlace_ = number;
+}
+
+/**
+ *  Getter for the place in the ranking of an Adventurer
+ * @return (int) rankingPlace_
+ */
+int Adventurer::getRankingPlace() const {
+    return rankingPlace_;
 }
 
 /**

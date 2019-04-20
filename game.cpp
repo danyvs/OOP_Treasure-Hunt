@@ -24,14 +24,8 @@ Game::Game(int lines, int columns) : map_(lines, columns) {
     adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "D"));
     map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
 
-    gameFinished = false;
-}
-
-/**
- *  Destructor for class Game
- */
-Game::~Game() {
-
+    gameFinished_ = false;
+    rank_ = 4;
 }
 
 /**
@@ -59,7 +53,7 @@ void Game::generateTreasures() {
  * @param step - the number of the current step
  */
 void Game::playOneRound(int step) {
-    if (!gameFinished) {
+    if (!gameFinished_) {
         cout << "Round #" << step << "\n";
         for (auto it : adventurers_) {
             if (it->canAdventurerMove(map_)) {
@@ -79,6 +73,9 @@ void Game::playOneRound(int step) {
                     cout << it->getName() << " found a treasure!\n";
                     adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
                     treasures_.erase(itFindTreasure);
+                    it->setFoundATreasure(true);
+                    it->setRankingPlace(rank_);
+                    --rank_;
                     --it;
                 }
             } else {
@@ -86,7 +83,7 @@ void Game::playOneRound(int step) {
                 adventurers_.erase(adventurers_.begin() + (it - *adventurers_.begin()));
                 --it;
             }
-            gameFinished = (adventurers_.empty() || treasures_.empty());
+            gameFinished_ = (adventurers_.empty() || treasures_.empty());
         }
     }
 }
@@ -97,7 +94,7 @@ void Game::playOneRound(int step) {
  */
 void Game::playNumberOfRounds(int cntRounds) {
     for (int i = 1; i <= cntRounds; ++i)
-        if (!gameFinished)
+        if (!gameFinished_)
             playOneRound(i);
         else
             cout << "Game ended before the given number of rounds!\n";
@@ -109,7 +106,7 @@ void Game::playNumberOfRounds(int cntRounds) {
  */
 void Game::play() {
     int round = 1;
-    while (!gameFinished) {
+    while (!gameFinished_) {
         playOneRound(round);
         ++round;
     }
