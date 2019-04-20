@@ -15,8 +15,8 @@
 Adventurer::Adventurer(int line, int column, const string& name) {
     name_ = name;
     position_ = make_pair(line, column);
-    foundATreasure = false;
-    place = 0;
+    foundATreasure_ = false;
+    place_ = 0;
 }
 
 /**
@@ -41,6 +41,14 @@ bool Adventurer::canAdventurerMove(Map &map) {
 }
 
 /**
+ *  Getter for the name of an Adventurer
+ * @return (string) name_
+ */
+string Adventurer::getName() const {
+    return name_;
+}
+
+/**
  *  Getter for the position of an Adventurer
  * @return (pair<int, int>) position_
  */
@@ -49,11 +57,19 @@ pair<int, int> Adventurer::getPosition() const {
 }
 
 /**
- *  Getter for the name of an adventurer
- * @return (string) name_
+ *  Setter for the variable maintaining if an Adventurer found a treasure or not
+ * @param value - bool
  */
-string Adventurer::getName() const {
-    return name_;
+void Adventurer::setFoundATreasure(bool value) {
+    foundATreasure_ = true;
+}
+
+/**
+ *  Getter for the variable maintaining if an Adventurer found a treasure or not
+ * @return (bool) foundATreasure_
+ */
+bool Adventurer::getFoundATreasure() const {
+    return foundATreasure_;
 }
 
 /**

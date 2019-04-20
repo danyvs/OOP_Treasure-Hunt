@@ -15,16 +15,16 @@ class Adventurer {
 protected:
     string name_;
     pair<int, int> position_;
-    bool foundATreasure;
-    int place;
+    bool foundATreasure_;
+    int place_;
 public:
     Adventurer(int line, int column, const string& name);
     virtual void move(Map& map, int step) = 0;
     bool canAdventurerMove(Map& map);
     string getName() const;
     pair<int, int> getPosition() const;
-    void setFoundATreasure();
-    bool getFoundATreasure();
+    void setFoundATreasure(bool value);
+    bool getFoundATreasure() const;
     void setPlace(int number);
     int getPlace() const;
 };
