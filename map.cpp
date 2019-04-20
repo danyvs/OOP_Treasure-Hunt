@@ -33,7 +33,7 @@ Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
  */
 Map::~Map() {
     for (int i = 0; i <= cntLines_ + 1; ++i)
-    delete[] content_[i];
+        delete[] content_[i];
     delete content_;
 }
 
