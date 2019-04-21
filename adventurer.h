@@ -57,9 +57,12 @@ public:
 };
 
 class AdventurerD : public Adventurer {
+    const int dx[5] = {0, 1, 1, 1, 0};
+    const int dy[5] = {-1, -1, 0, 1, 1};
 public:
     AdventurerD(int line, int column, const string& name);
-    void move(Map& map, int step);
+    bool canAdventurerMove(Map& map) override;
+    void move(Map& map, int step) override;
 };
 
 #endif //OOP_TREASURE_HUNT_ADVENTURER_H

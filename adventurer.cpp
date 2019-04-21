@@ -202,7 +202,7 @@ bool AdventurerC::canAdventurerMove(Map &map) {
  */
 void AdventurerC::move(Map& map, int step) {
     int line, column;
-    int index = 0;
+    int index = step % 4;
     if (step % 2 == 0)
         ++step;
     // try to move the adventurer in a neighbour cell
@@ -219,30 +219,61 @@ void AdventurerC::move(Map& map, int step) {
 
 
 /**
- *  Constructor for AdventurerD
- * @param line - int, the line to place the Adventurer on
- * @param column - int, the column to place the Adventurer on
- * @param name, string, the name of the Adventurer
- */
+*  Constructor for AdventurerD
+* @param line - int, the line to place the Adventurer on
+* @param column - int, the column to place the Adventurer on
+* @param name, string, the name of the Adventurer
+*/
 AdventurerD::AdventurerD(int line, int column, const string& name) : Adventurer(line, column, name) {
 
 }
 
 /**
- *
- * @param map
- * @param step
+ *  Check if AdventurerD can move into a neighbour cell
+ * @param map - Map
+ * @return true or false, if the AdventurerD can move or not
  */
-void AdventurerD::move(Map& map, int step) {/*
-    int line, column;
-    ++step;
+bool AdventurerD::canAdventurerMove(Map &map) {
+    int line = position_.first;
+    int column = position_.second;
+    for (int i = 0; i < 5; ++i) {
+        int newLine = line + dx[i];
+        int newColumn = column + dy[i];
+        if (!map.getContentPosition(newLine, newColumn))
+            return true;
+    }
 
+    return false;
+}
+
+/**
+ *  Move function for AdventurerD
+ * @param map - Map
+ * @param step - the number of the current round
+ */
+void AdventurerD::move(Map& map, int step) {
+    int line = position_.first;
+    int column = position_.second;
+    int index = 0;
+    step %= 5;
+    if (step == 0) {
+        step = (line + column) % 5;
+        if (step == 0) {
+            step = line % 5;
+            if (step == 0) {
+                step = column % 5;
+                if (step == 0)
+                    step = 2;
+            }
+        }
+    }
     // try to move the adventurer in a neighbour cell
     do {
-        // line = ;
-        // column = ;
+        line = position_.first + dx[index];
+        column = position_.second + dy[index];
+        index = (index + step) % 5;
     } while (map.getContentPosition(line, column) == 1);
 
-    position_ = std::make_pair(line, column);
-    map.setContentPosition(line, column, -1);*/
+    position_ = make_pair(line, column);
+    map.setContentPosition(line, column, 1);
 }
