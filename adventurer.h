@@ -48,9 +48,12 @@ public:
 };
 
 class AdventurerC : public Adventurer {
+    const int dx[4] = {-1, -1, 1, 1};
+    const int dy[4] = {-1, 1, -1, 1};
 public:
     AdventurerC(int line, int column, const string& name);
-    void move(Map& map, int step);
+    bool canAdventurerMove(Map& map) override;
+    void move(Map& map, int step) override;
 };
 
 class AdventurerD : public Adventurer {
