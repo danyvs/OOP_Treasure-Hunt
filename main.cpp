@@ -14,7 +14,8 @@ int main() {
     // initialize the game
     Game game(lines, columns);
     game.generateTreasures();
-
+    game.playNumberOfRounds(30);
+/*
     string answer;
     int cntRounds;
     cout << "Do you want to play 'til the end? (YES / NO)\n";
@@ -37,8 +38,7 @@ int main() {
         else
             cout << "Invalid answer!\n";
     }
-
-
+*/
 
     return 0;
 }
