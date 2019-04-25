@@ -17,12 +17,12 @@ class Adventurer {
 protected:
     pair<int, int> position_;
 public:
-    Adventurer(int line, int column, const string& name);
-    virtual void move(Map& map, int step) = 0;
+    Adventurer(const int& line, const int& column, const string& name);
+    virtual void move(Map& map, const int& step) = 0;
     virtual bool canAdventurerMove(Map& map) = 0;
     string getName() const;
     pair<int, int> getPosition() const;
-    void setFoundATreasure(bool value);
+    void setFoundATreasure(const bool& value);
     bool getFoundATreasure() const;
 };
 
@@ -30,36 +30,36 @@ class AdventurerA : public Adventurer {
     const int dx[8] = {-1, -1, -1, 0, 1, 1, 1, 0};
     const int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
 public:
-    AdventurerA(int line, int column, const string& name);
+    AdventurerA(const int& line, const int& column, const string& name);
     bool canAdventurerMove(Map& map) override;
-    void move(Map& map, int step) override;
+    void move(Map& map, const int& step) override;
 };
 
 class AdventurerB : public Adventurer {
     const int dx[4] = {-1, 0, 1, 0};
     const int dy[4] = {0, 1, 0, -1};
 public:
-    AdventurerB(int line, int column, const string& name);
+    AdventurerB(const int& line, const int& column, const string& name);
     bool canAdventurerMove(Map& map) override;
-    void move(Map& map, int step) override;
+    void move(Map& map, const int& step) override;
 };
 
 class AdventurerC : public Adventurer {
     const int dx[4] = {-1, -1, 1, 1};
     const int dy[4] = {-1, 1, -1, 1};
 public:
-    AdventurerC(int line, int column, const string& name);
+    AdventurerC(const int& line, const int& column, const string& name);
     bool canAdventurerMove(Map& map) override;
-    void move(Map& map, int step) override;
+    void move(Map& map, const int& step) override;
 };
 
 class AdventurerD : public Adventurer {
     const int dx[5] = {0, 1, 1, 1, 0};
     const int dy[5] = {-1, -1, 0, 1, 1};
 public:
-    AdventurerD(int line, int column, const string& name);
+    AdventurerD(const int& line, const int& column, const string& name);
     bool canAdventurerMove(Map& map) override;
-    void move(Map& map, int step) override;
+    void move(Map& map, const int& step) override;
 };
 
 #endif //OOP_TREASURE_HUNT_ADVENTURER_H

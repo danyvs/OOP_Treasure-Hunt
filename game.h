@@ -20,12 +20,12 @@ class Game {
     vector<Adventurer*> winningAdventurers_;
     deque<Adventurer*> losingAdventurers_;
 public:
-    Game(int lines, int columns);
-    // ~Game();
+    Game(const int& lines, const int& columns);
     void generateTreasures();
+    bool isGameFinished() const;
 
     void playOneRound(int step);
-    void playNumberOfRounds(int cntRounds);
+    void playNumberOfRounds(int cntRounds, int step);
     void play();
 
     void printLeaderborad();

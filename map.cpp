@@ -60,9 +60,9 @@ int Map::getCntColumns() const {
  * @return int content_[line][column]
  */
 int Map::getContentPosition(const int& line, const int& column) const {
-    if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
+    if (line > 0 && line <= cntLines_ && column > 0 && column <= cntColumns_)
         return content_[line][column];
-    return -1;
+    return 1;
 }
 
 /**

@@ -11,18 +11,18 @@
  * @param lines
  * @param columns
  */
-Game::Game(int lines, int columns) : map_(lines, columns) {
+Game::Game(const int& lines, const int& columns) : map_(lines, columns) {
     adventurers_.push_back(new AdventurerA(1, 1, "Dumb seeker"));
     map_.setContentPosition(1, 1, 1);
 
     adventurers_.push_back(new AdventurerB(1, map_.getCntColumns(), "Jack Sparrow"));
     map_.setContentPosition(1, map_.getCntColumns(), 1);
 
-    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1, "Lucky seeker"));
-    map_.setContentPosition(map_.getCntColumns(), 1, 1);
+    adventurers_.push_back(new AdventurerC(map_.getCntLines(), map_.getCntColumns(), "Seeeeker"));
+    map_.setContentPosition(map_.getCntLines(), map_.getCntColumns(), 1);
 
-    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "Seeeeker"));
-    map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
+    adventurers_.push_back(new AdventurerD(map_.getCntLines(), 1, "Lucky seeker"));
+    map_.setContentPosition(map_.getCntLines(), 1, 1);
 
     gameFinished_ = false;
 }
@@ -46,6 +46,14 @@ void Game::generateTreasures() {
         cout << "A treasure was generated on line " << line << " and column " << column << "\n";
         treasures_.emplace_back(make_pair(line, column));
     }
+}
+
+/**
+ *  Getter to see if the game is finished or not
+ * @return (bool) gameFinished_
+ */
+bool Game::isGameFinished() const {
+    return gameFinished_;
 }
 
 /**
@@ -92,10 +100,10 @@ void Game::playOneRound(int step) {
  *  Play a given number of rounds
  * @param cntRounds - int, the number of rounds to be played
  */
-void Game::playNumberOfRounds(int cntRounds) {
+void Game::playNumberOfRounds(int cntRounds, int step) {
     for (int i = 1; i <= cntRounds; ++i)
         if (!gameFinished_)
-            playOneRound(i);
+            playOneRound(step++);
         else {
             cout << "Game ended before the given number of rounds!\n";
             break;
@@ -115,6 +123,7 @@ void Game::play() {
 }
 
 void Game::printLeaderborad() {
+    cout << "\n";
     int rank = 1;
     for (auto adventurer : winningAdventurers_)
         cout << adventurer->getName() << " finished on position " << rank++ << " and found a treasure! :)\n";

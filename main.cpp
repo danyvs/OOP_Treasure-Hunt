@@ -14,32 +14,39 @@ int main() {
     // initialize the game
     Game game(lines, columns);
     game.generateTreasures();
-    game.play();
-    game.printLeaderborad();
-/*
+
     string answer;
-    int cntRounds;
+    int cntRounds, step = 1;
     cout << "Do you want to play 'til the end? (YES / NO)\n";
     cin >> answer;
     if (answer == "YES")
         game.play();
     else {
         if (answer == "NO") {
-            cout << "Do you want to play a given number of rounds? (YES / NO)\n";
-            cin >> answer;
-            while (answer == "YES") {
-                cout << "Input the number of rounds you want to play: ";
-                cin >> cntRounds;
-                game.playNumberOfRounds(cntRounds);
-
+            while (!game.isGameFinished()) {
                 cout << "Do you want to play a given number of rounds? (YES / NO)\n";
                 cin >> answer;
+                if (answer == "YES") {
+                    cout << "Input the number of rounds you want to play: ";
+                    cin >> cntRounds;
+                    game.playNumberOfRounds(cntRounds, step);
+                    step += cntRounds;
+                }
+                else {
+                    if (answer == "NO") {
+                        game.playOneRound(step);
+                        ++step;
+                    }
+                    else
+                        cout << "Invalid answer!\n";
+                }
             }
         }
         else
             cout << "Invalid answer!\n";
     }
-*/
+
+    game.printLeaderborad();
 
     return 0;
 }
