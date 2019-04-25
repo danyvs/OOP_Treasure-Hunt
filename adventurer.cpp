@@ -12,8 +12,7 @@
  * @param column - int, the column to place the Adventurer on
  * @param name - string, the name of the Adventurer
  */
-Adventurer::Adventurer(const int& line, const int& column, const string& name) {
-    name_ = name;
+Adventurer::Adventurer(const int& line, const int& column, string name) : name_(std::move(name)) {
     position_ = make_pair(line, column);
     foundATreasure_ = false;
 }
