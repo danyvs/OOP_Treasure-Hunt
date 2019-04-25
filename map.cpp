@@ -11,7 +11,7 @@
  * @param lines - int, the number of lines
  * @param columns - int, the number of columns
  */
-Map::Map(int lines, int columns) : cntLines_(lines), cntColumns_(columns) {
+Map::Map(const int& lines, const int& columns) : cntLines_(lines), cntColumns_(columns) {
     content_ = new int*[cntLines_ + 2];
     for (int i = 0; i < cntLines_ + 2; ++i)
         content_[i] = new int[cntColumns_ + 2];
@@ -41,7 +41,7 @@ Map::~Map() {
  *  Getter for the number of lines
  * @return (int) cntLines_
  */
-int Map::getCntLines() {
+int Map::getCntLines() const {
     return cntLines_;
 }
 
@@ -49,7 +49,7 @@ int Map::getCntLines() {
  *  Getter for the number of columns
  * @return (int) cntColumns_
  */
-int Map::getCntColumns() {
+int Map::getCntColumns() const {
     return cntColumns_;
 }
 
@@ -59,7 +59,7 @@ int Map::getCntColumns() {
  * @param column - int
  * @return int content_[line][column]
  */
-int Map::getContentPosition(int line, int column) {
+int Map::getContentPosition(const int& line, const int& column) const {
     if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
         return content_[line][column];
     return -1;
@@ -71,7 +71,7 @@ int Map::getContentPosition(int line, int column) {
  * @param column - int
  * @param data - int
  */
-void Map::setContentPosition(int line, int column, int data) {
+void Map::setContentPosition(const int& line, const int& column, const int& data) {
     if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
         content_[line][column] = data;
 }

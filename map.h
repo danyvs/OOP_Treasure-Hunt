@@ -8,24 +8,15 @@
 #include <iostream>
 
 class Map {
-    int cntLines_, cntColumns_;
+    const int cntLines_, cntColumns_;
     int** content_;
 public:
-    Map(int lines, int columns);
+    Map(const int& lines, const int& columns);
     ~Map();
-    int getCntLines();
-    int getCntColumns();
-    int getContentPosition(int line, int column);
-    void setContentPosition(int line, int column, int data);
-
-    void printMap() {
-        // to be deleted
-        for (int i = 0; i <= cntLines_ + 1; ++i) {
-            for (int j = 0; j <= cntColumns_ + 1; ++j)
-                std::cout << content_[i][j] << " ";
-            std::cout << std::endl;
-        }
-    }
+    int getCntLines() const;
+    int getCntColumns() const;
+    int getContentPosition(const int& line, const int& column) const;
+    void setContentPosition(const int& line, const int& column, const int& data);
 };
 
 #endif //OOP_TREASURE_HUNT_MAP_H

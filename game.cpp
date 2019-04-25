@@ -80,7 +80,7 @@ void Game::playOneRound(int step) {
                     }
                 } else {
                     cout << adventurer->getName() << " was eliminated, because he can't move any more!\n";
-                    losingAdventurers_.push_back(adventurer);
+                    losingAdventurers_.push_front(adventurer);
                 }
             }
         gameFinished_ = ((winningAdventurers_.size() + losingAdventurers_.size() == 4) || treasures_.empty());

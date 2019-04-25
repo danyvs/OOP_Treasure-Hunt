@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <deque>
 #include "adventurer.h"
 
 using namespace std;
@@ -17,7 +18,7 @@ class Game {
     vector<pair<int, int>> treasures_;
     bool gameFinished_;
     vector<Adventurer*> winningAdventurers_;
-    vector<Adventurer*> losingAdventurers_;
+    deque<Adventurer*> losingAdventurers_;
 public:
     Game(int lines, int columns);
     // ~Game();
