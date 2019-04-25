@@ -19,6 +19,11 @@ Adventurer::Adventurer(const int& line, const int& column, const string& name) {
 }
 
 /**
+ *  Destructor for class Adventurer
+ */
+Adventurer::~Adventurer() = default;
+
+/**
  *  Getter for the name of an Adventurer
  * @return (string) name_
  */
@@ -61,6 +66,11 @@ bool Adventurer::getFoundATreasure() const {
 AdventurerA::AdventurerA(const int& line, const int& column, const string& name) : Adventurer(line, column, name) {
 
 }
+
+/**
+ *  Destructor for class AdventurerA
+ */
+AdventurerA::~AdventurerA() = default;
 
 /**
  *  Check if AdventurerA can move into a neighbour cell
@@ -112,6 +122,11 @@ AdventurerB::AdventurerB(const int& line, const int& column, const string& name)
 }
 
 /**
+ *  Destructor for class AdventurerB
+ */
+AdventurerB::~AdventurerB() = default;
+
+/**
  *  Check if AdventurerB can move into a neighbour cell
  * @param map - Map
  * @return true or false, if the AdventurerB can move or not
@@ -159,6 +174,11 @@ void AdventurerB::move(Map& map, const int& step) {
 AdventurerC::AdventurerC(const int& line, const int& column, const string& name) : Adventurer(line, column, name) {
 
 }
+
+/**
+ *  Destructor for class AdventurerC
+ */
+AdventurerC::~AdventurerC() = default;
 
 /**
  *  Check if AdventurerC can move into a neighbour cell
@@ -211,6 +231,11 @@ AdventurerD::AdventurerD(const int& line, const int& column, const string& name)
 }
 
 /**
+ *  Destructor for class AdventurerD
+ */
+AdventurerD::~AdventurerD() = default;
+
+/**
  *  Check if AdventurerD can move into a neighbour cell
  * @param map - Map
  * @return true or false, if the AdventurerD can move or not
@@ -234,8 +259,7 @@ bool AdventurerD::canAdventurerMove(Map &map) {
  * @param step - the number of the current round
  */
 void AdventurerD::move(Map& map, const int& step) {
-    int line = position_.first;
-    int column = position_.second;
+    int line, column;
     int index = 0;
     int inc = step % 5;
     if (inc == 0)
