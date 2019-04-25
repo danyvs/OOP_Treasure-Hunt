@@ -13,10 +13,13 @@ class Map {
 public:
     Map(const int& lines, const int& columns);
     ~Map();
+
     int getCntLines() const;
     int getCntColumns() const;
     int getContentPosition(const int& line, const int& column) const;
     void setContentPosition(const int& line, const int& column, const int& data);
+
+    void printMap();
 };
 
 #endif //OOP_TREASURE_HUNT_MAP_H

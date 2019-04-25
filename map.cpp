@@ -2,7 +2,7 @@
 // Created by Dany on 13.04.2019.
 //
 
-#include <cstdlib>
+#include <iostream>
 #include "map.h"
 
 /**
@@ -74,4 +74,15 @@ int Map::getContentPosition(const int& line, const int& column) const {
 void Map::setContentPosition(const int& line, const int& column, const int& data) {
     if (line >= 0 && line <= cntLines_ + 1 && column >= 0 && column <= cntColumns_ + 1)
         content_[line][column] = data;
+}
+
+/**
+ *  Function to print the map
+ */
+void Map::printMap() {
+    for (int i = 0; i <= cntLines_ + 1; ++i) {
+        for (int j = 0; j <= cntColumns_ + 1; ++j)
+            std::cout << content_[i][j] << " ";
+        std::cout << "\n";
+    }
 }
