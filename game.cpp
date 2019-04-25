@@ -99,8 +99,10 @@ void Game::playNumberOfRounds(int cntRounds) {
     for (int i = 1; i <= cntRounds; ++i)
         if (!gameFinished_)
             playOneRound(i);
-        else
+        else {
             cout << "Game ended before the given number of rounds!\n";
+            break;
+        }
 }
 
 /**
@@ -116,6 +118,11 @@ void Game::play() {
 }
 
 void Game::printLeaderborad() {
-    for (auto it : adventurers_)
-        it->getFoundATreasure();
+    for (auto it : adventurers_) {
+        cout << it->getName() << " finished on position " << it->getRankingPlace() << " and ";
+        if (it->getFoundATreasure())
+            cout << "found a treasure! :)\n";
+        else
+            cout << "didn't find any treasures! :(\n";
+    }
 }

@@ -14,7 +14,6 @@ using namespace std;
 class Adventurer {
     string name_;
     bool foundATreasure_;
-    int rankingPlace_;
 protected:
     pair<int, int> position_;
 public:
@@ -25,8 +24,6 @@ public:
     pair<int, int> getPosition() const;
     void setFoundATreasure(bool value);
     bool getFoundATreasure() const;
-    void setRankingPlace(int number);
-    int getRankingPlace() const;
 };
 
 class AdventurerA : public Adventurer {

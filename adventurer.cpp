@@ -51,22 +51,6 @@ bool Adventurer::getFoundATreasure() const {
     return foundATreasure_;
 }
 
-/**
- *  Setter for the place in the ranking of an Adventurer
- * @param number - int, the rank
- */
-void Adventurer::setRankingPlace(int number) {
-    rankingPlace_ = number;
-}
-
-/**
- *  Getter for the place in the ranking of an Adventurer
- * @return (int) rankingPlace_
- */
-int Adventurer::getRankingPlace() const {
-    return rankingPlace_;
-}
-
 
 
 /**
