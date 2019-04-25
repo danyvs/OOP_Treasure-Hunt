@@ -16,7 +16,8 @@ class Game {
     vector<Adventurer*> adventurers_;
     vector<pair<int, int>> treasures_;
     bool gameFinished_;
-    int rank_;
+    vector<Adventurer*> winningAdventurers_;
+    vector<Adventurer*> losingAdventurers_;
 public:
     Game(int lines, int columns);
     // ~Game();

@@ -14,8 +14,8 @@ int main() {
     // initialize the game
     Game game(lines, columns);
     game.generateTreasures();
-    game.playNumberOfRounds(30);
-    // game.printLeaderborad();
+    game.play();
+    game.printLeaderborad();
 /*
     string answer;
     int cntRounds;

@@ -16,7 +16,6 @@ Adventurer::Adventurer(int line, int column, const string& name) {
     name_ = name;
     position_ = make_pair(line, column);
     foundATreasure_ = false;
-    rankingPlace_ = 0;
 }
 
 /**

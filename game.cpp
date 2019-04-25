@@ -18,14 +18,13 @@ Game::Game(int lines, int columns) : map_(lines, columns) {
     adventurers_.push_back(new AdventurerB(1, map_.getCntColumns(), "Jack Sparrow"));
     map_.setContentPosition(1, map_.getCntColumns(), 1);
 
-    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1, "Seeeeker"));
+    adventurers_.push_back(new AdventurerC(map_.getCntColumns(), 1, "Lucky seeker"));
     map_.setContentPosition(map_.getCntColumns(), 1, 1);
 
-    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "Out of ideas"));
+    adventurers_.push_back(new AdventurerD(map_.getCntColumns(), map_.getCntColumns(), "Seeeeker"));
     map_.setContentPosition(map_.getCntColumns(), map_.getCntColumns(), 1);
 
     gameFinished_ = false;
-    rank_ = 4;
 }
 
 /**
@@ -56,37 +55,35 @@ void Game::generateTreasures() {
 void Game::playOneRound(int step) {
     if (!gameFinished_) {
         cout << "Round #" << step << "\n";
-        for (auto it : adventurers_)
-            if (it->getRankingPlace() == 0) {
-                if (it->canAdventurerMove(map_)) {
-                    cout << it->getName() << " : ";
+        for (auto adventurer : adventurers_)
+            if (find(winningAdventurers_.begin(), winningAdventurers_.end(), adventurer) == winningAdventurers_.end() &&
+            find(losingAdventurers_.begin(), losingAdventurers_.end(), adventurer) == losingAdventurers_.end()) {
+                if (adventurer->canAdventurerMove(map_)) {
+                    cout << adventurer->getName() << " : ";
 
                     // initial position
-                    pair<int, int> positionAdventurer = it->getPosition();
+                    pair<int, int> positionAdventurer = adventurer->getPosition();
                     cout << positionAdventurer.first << " " << positionAdventurer.second << " -> ";
 
                     // position after moving
-                    it->move(map_, step);
-                    positionAdventurer = it->getPosition();
+                    adventurer->move(map_, step);
+                    positionAdventurer = adventurer->getPosition();
                     cout << positionAdventurer.first << " " << positionAdventurer.second << "\n";
 
                     // verify if the current adventurer found a treasure
-                    auto itFindTreasure = find(treasures_.begin(), treasures_.end(), it->getPosition());
+                    auto itFindTreasure = find(treasures_.begin(), treasures_.end(), positionAdventurer);
                     if (itFindTreasure != treasures_.end()) {
-                        cout << it->getName() << " found a treasure!\n";
+                        cout << adventurer->getName() << " found a treasure!\n";
                         treasures_.erase(itFindTreasure);
-                        it->setFoundATreasure(true);
-                        it->setRankingPlace(rank_);
-                        --rank_;
+                        adventurer->setFoundATreasure(true);
+                        winningAdventurers_.push_back(adventurer);
                     }
+                } else {
+                    cout << adventurer->getName() << " was eliminated, because he can't move any more!\n";
+                    losingAdventurers_.push_back(adventurer);
                 }
-                else {
-                    cout << it->getName() << " was eliminated, because he can't move any more!\n";
-                    it->setRankingPlace(rank_);
-                    --rank_;
-                }
-                gameFinished_ = (rank_ == 0 || treasures_.empty());
             }
+        gameFinished_ = ((winningAdventurers_.size() + losingAdventurers_.size() == 4) || treasures_.empty());
     }
     cout << "\n";
 }
@@ -118,11 +115,9 @@ void Game::play() {
 }
 
 void Game::printLeaderborad() {
-    for (auto it : adventurers_) {
-        cout << it->getName() << " finished on position " << it->getRankingPlace() << " and ";
-        if (it->getFoundATreasure())
-            cout << "found a treasure! :)\n";
-        else
-            cout << "didn't find any treasures! :(\n";
-    }
+    int rank = 1;
+    for (auto adventurer : winningAdventurers_)
+        cout << adventurer->getName() << " finished on position " << rank++ << " and found a treasure! :)\n";
+    for (auto adventurer : losingAdventurers_)
+        cout << adventurer->getName() << " finished on position " << rank++ << ", but didn't find any treasures! :(\n";
 }
