@@ -12,16 +12,16 @@
  * @param columns
  */
 Game::Game(const int& lines, const int& columns) : map_(lines, columns) {
-    adventurers_.push_back(new AdventurerA(1, 1, "Dumb seeker"));
+    adventurers_.push_back(new AdventurerA(1, 1, "DumbSeeker"));
     map_.setContentPosition(1, 1, 1);
 
-    adventurers_.push_back(new AdventurerB(1, map_.getCntColumns(), "Jack Sparrow"));
+    adventurers_.push_back(new AdventurerB(1, map_.getCntColumns(), "JackSparrow"));
     map_.setContentPosition(1, map_.getCntColumns(), 1);
 
     adventurers_.push_back(new AdventurerC(map_.getCntLines(), map_.getCntColumns(), "Seeeeker"));
     map_.setContentPosition(map_.getCntLines(), map_.getCntColumns(), 1);
 
-    adventurers_.push_back(new AdventurerD(map_.getCntLines(), 1, "Lucky seeker"));
+    adventurers_.push_back(new AdventurerD(map_.getCntLines(), 1, "LuckySeeker"));
     map_.setContentPosition(map_.getCntLines(), 1, 1);
 
     gameFinished_ = false;
@@ -60,7 +60,7 @@ bool Game::isGameFinished() const {
  *  Play one round: move all the adventurers
  * @param step - the number of the current step
  */
-void Game::playOneRound(int step) {
+void Game::playOneRound(const int& step) {
     if (!gameFinished_) {
         cout << "Round #" << step << "\n";
         for (auto adventurer : adventurers_)
@@ -92,6 +92,9 @@ void Game::playOneRound(int step) {
                 }
             }
         gameFinished_ = ((winningAdventurers_.size() + losingAdventurers_.size() == 4) || treasures_.empty());
+
+        cout << "\n1 is visited and 0 is not visited\n";
+        printMap();
     }
     cout << "\n";
 }
@@ -100,10 +103,10 @@ void Game::playOneRound(int step) {
  *  Play a given number of rounds
  * @param cntRounds - int, the number of rounds to be played
  */
-void Game::playNumberOfRounds(int cntRounds, int step) {
-    for (int i = 1; i <= cntRounds; ++i)
+void Game::playNumberOfRounds(const int& cntRounds, const int& step) {
+    for (int i = 1, round = step; i <= cntRounds; ++i, ++round)
         if (!gameFinished_)
-            playOneRound(step++);
+            playOneRound(round);
         else {
             cout << "Game ended before the given number of rounds!\n";
             break;
@@ -122,11 +125,33 @@ void Game::play() {
     }
 }
 
-void Game::printLeaderborad() {
+/**
+ *  Function to print the leaderboard
+ */
+void Game::printLeaderboard() {
     cout << "\n";
+
+    cout << "The Adventurers that found a treasure are: ";
+    int cnt = 0;
+    for (auto adventurer: adventurers_)
+        if (adventurer->getFoundATreasure()) {
+            cout << adventurer->getName() << " ";
+            ++cnt;
+        }
+    if (!cnt)
+        cout << " - ";
+    cout << "\n";
+
     int rank = 1;
     for (auto adventurer : winningAdventurers_)
         cout << adventurer->getName() << " finished on position " << rank++ << " and found a treasure! :)\n";
     for (auto adventurer : losingAdventurers_)
         cout << adventurer->getName() << " finished on position " << rank++ << ", but didn't find any treasures! :(\n";
+}
+
+/**
+ *  Function to print the map
+ */
+void Game::printMap() {
+    map_.printMap();
 }

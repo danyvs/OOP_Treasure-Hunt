@@ -24,11 +24,12 @@ public:
     void generateTreasures();
     bool isGameFinished() const;
 
-    void playOneRound(int step);
-    void playNumberOfRounds(int cntRounds, int step);
+    void playOneRound(const int& step);
+    void playNumberOfRounds(const int& cntRounds, const int& step);
     void play();
 
-    void printLeaderborad();
+    void printLeaderboard();
+    void printMap();
 };
 
 #endif //OOP_TREASURE_HUNT_GAME_H

@@ -46,7 +46,7 @@ int main() {
             cout << "Invalid answer!\n";
     }
 
-    game.printLeaderborad();
+    game.printLeaderboard();
 
     return 0;
 }
