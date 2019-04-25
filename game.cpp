@@ -93,7 +93,7 @@ void Game::playOneRound(const int& step) {
             }
         gameFinished_ = ((winningAdventurers_.size() + losingAdventurers_.size() == 4) || treasures_.empty());
 
-        cout << "\n1 is visited and 0 is not visited\n";
+        cout << "The map is (1 is visited and 0 is not visited):\n";
         printMap();
     }
     cout << "\n";
